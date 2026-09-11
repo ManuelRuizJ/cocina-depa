@@ -2,5 +2,6 @@
   "INGREDIENTES_DB_ID": "3d77afbf-94f8-8102-89dd-e5b6ff1b28d2",
   "INVENTARIO_DB_ID": "3d77afbf-94f8-81d7-8b7f-c0843a37d7cb",
   "PLATILLOS_DB_ID": "3d77afbf-94f8-8119-b5ac-ecef18b090cf",
-  "PUENTE_DB_ID": "3d77afbf-94f8-818f-993d-d960a1ea118e"
+  "PUENTE_DB_ID": "3d77afbf-94f8-818f-993d-d960a1ea118e",
+  "MENU_SEMANA_DB_ID": "3d87afbf-94f8-81a7-8310-c4e34567d261"
 }
