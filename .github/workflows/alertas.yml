@@ -1,0 +1,26 @@
+name: Alerta de inventario
+
+on:
+  schedule:
+    # 14:00 UTC = 8:00 AM hora de Puebla (aprox, ajusta si hay horario de verano)
+    - cron: "0 14 * * *"
+  workflow_dispatch: {}   # te permite correrlo manualmente desde GitHub
+
+jobs:
+  alertar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r requirements.txt
+
+      - run: python alertas.py
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          EMAIL_APP_PASSWORD: ${{ secrets.EMAIL_APP_PASSWORD }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}

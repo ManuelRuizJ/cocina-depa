@@ -1,0 +1,26 @@
+name: Menú semanal
+
+on:
+  schedule:
+    # 14:00 UTC = 8:00 AM hora de Puebla, viernes
+    - cron: "0 14 * * 5"
+  workflow_dispatch: {}
+
+jobs:
+  enviar_menu:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r requirements.txt
+
+      - run: python menu_semanal.py
+        env:
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          EMAIL_APP_PASSWORD: ${{ secrets.EMAIL_APP_PASSWORD }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
